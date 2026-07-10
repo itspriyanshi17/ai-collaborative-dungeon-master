@@ -1,0 +1,8 @@
+{
+  "name": "backend",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": ".venv\\Scripts\\uvicorn app.main:socket_app --reload --port 8000"
+  }
+}
