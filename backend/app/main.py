@@ -6,9 +6,14 @@ from app.api.router import api_router
 from app.config import settings
 from app.middleware import AuthenticationStateMiddleware
 from app.socket.server import sio
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def create_app() -> FastAPI:
+    logger.info(f"Loaded ALLOWED_ORIGINS: {settings.allowed_origins}")
+    print(f"Loaded ALLOWED_ORIGINS: {settings.allowed_origins}")
     app = FastAPI(title=settings.app_name, version="0.1.0")
     app.add_middleware(AuthenticationStateMiddleware)
     app.add_middleware(

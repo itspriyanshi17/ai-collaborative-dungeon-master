@@ -13,6 +13,7 @@ DEFAULT_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
     "http://localhost:3001",
     "http://127.0.0.1:3001",
+    "https://ai-collaborative-dungeon-master-fro.vercel.app",
 ]
 
 
@@ -42,7 +43,7 @@ class Settings(BaseSettings):
         if not isinstance(parsed, list):
             raise ValueError("ALLOWED_ORIGINS must be a JSON array or comma-separated list")
 
-        return [str(origin).strip() for origin in parsed if str(origin).strip()]
+        return [str(origin).strip().rstrip("/") for origin in parsed if str(origin).strip()]
 
     model_config = SettingsConfigDict(
         env_file=BACKEND_DIR / ".env",
